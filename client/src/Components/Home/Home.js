@@ -1,7 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useEffect } from "react";
+import { ThunkMiddleware } from "redux-thunk";
+import { composeWithDevTools } from "redux-devtools-extension";
 import swal from "sweetalert";
 
 import { AiFillEdit } from "react-icons/ai";
@@ -17,13 +18,14 @@ function Home(props) {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.user);
+  console.log(Object.keys(user).length == 0);
   if (Object.keys(user).length == 0) {
     navigate("/login");
   }
 
   const projects = useSelector((state) => state.projects);
 
-  function updateStore() {
+  async function updateStore(dispatch, getState) {
     axios
       .get(`http://localhost:8000/getProjects/${user.userId}`)
       .then((response) => {
@@ -33,10 +35,6 @@ function Home(props) {
         console.log(error);
       });
   }
-
-  useEffect(() => {
-    //updateStore();
-  });
 
   function deleteProject(projectId) {
     swal({

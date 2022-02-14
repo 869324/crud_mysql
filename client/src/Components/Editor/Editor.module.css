@@ -1,0 +1,57 @@
+.editor {
+    width: 100vw;
+    height: 85vh;
+    position: fixed;
+    left: 0px;
+    top: 10vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    width: 60%;
+    height: 70%;
+    background-color: whitesmoke;
+    border-radius: 10px;
+}
+
+#closeBtn {
+    width: auto;
+    height: auto;
+    background: transparent;
+    border-style: none;
+    font-size: 25px;
+    font-weight: bold;
+    transform: rotate(45deg);
+    position: relative;
+    top: 10px;
+    left: 95%;
+    color: black;
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input {
+    border-radius: 7px;
+    padding: 7px;
+    margin: 10px;
+    width: 40%;
+    font-size: 18px;
+}
+
+#editBtn {
+    background-color: green;
+    padding: 10px;
+    font-weight: bold;
+    color: white;
+    border-radius: 10px;
+    width: 41%;
+    font-size: 18px;
+}
