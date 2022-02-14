@@ -120,8 +120,22 @@ app.delete("/deleteProject/:projectId", (req, res) => {
   const query = "delete from projects where projectId = ?";
 
   db.query(query, [projectId], (err, result) => {
-    if (err) console.log(err);
+    if (err) res.send({ success: false });
     res.send({ success: true });
+  });
+});
+
+app.put("/editProject", (req, res) => {
+  const projectId = req.body.projectId;
+  const name = req.body.name;
+  const desc = req.body.description;
+
+  const query =
+    "update projects set projectName = ?, projectDesc = ? where projectId = ?";
+
+  db.query(query, [name, desc, projectId], (err, result) => {
+    if (err) res.send({ success: false });
+    else res.send({ success: true });
   });
 });
 
